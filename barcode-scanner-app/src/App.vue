@@ -1,14 +1,18 @@
 <template>
-  <v-layout>
-    <v-app-bar color="grey-lighten-2">
-      <span class="header-text">Barcode scanner app</span>
-    </v-app-bar>
-    <BarcodeScanner />
-  </v-layout>
+  <v-no-ssr>
+    <v-layout>
+      <v-app-bar color="grey-lighten-2">
+        <span class="header-text">Barcode scanner app</span>
+      </v-app-bar>
+      <BarcodeScanner />
+    </v-layout>
+  </v-no-ssr>
 </template>
 
 <script lang="ts">
 import BarcodeScanner from "./components/BarcodeScanner.vue";
+import "@mdi/font/css/materialdesignicons.css";
+
 export default {
   name: "App",
   components: {

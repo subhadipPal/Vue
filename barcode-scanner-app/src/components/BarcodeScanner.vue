@@ -11,7 +11,7 @@
       :scannerControls="scannerControls"
       @update="updateOverlay"
     />
-    <BarcodeList :scannedBarcodes="scannedBarcodes" />
+    <BarcodeList />
   </div>
 </template>
 
@@ -20,6 +20,7 @@ import { defineComponent } from "vue";
 import { BrowserMultiFormatReader, IScannerControls } from "@zxing/browser";
 import ScannerOverlay from "./ScannerOverlay.vue";
 import BarcodeList from "./BarcodeList.vue";
+import useScannedBarCodesStore from "@/stores/scannerStore";
 
 const codeReader = new BrowserMultiFormatReader();
 
@@ -31,12 +32,10 @@ export default defineComponent({
   },
   data(): {
     isOverlayActive: boolean;
-    scannedBarcodes: Array<string>;
     scannerControls?: IScannerControls;
   } {
     return {
       isOverlayActive: false,
-      scannedBarcodes: [],
       scannerControls: undefined,
     };
   },
@@ -56,7 +55,7 @@ export default defineComponent({
             (result, _err, controls) => {
               this.scannerControls = controls;
               if (result) {
-                this.scannedBarcodes.push(result?.getText());
+                this.barcodeStore.pushBarCodes(result?.getText());
                 controls.stop();
                 this.isOverlayActive = false;
               }
@@ -65,6 +64,12 @@ export default defineComponent({
         }, 1);
       }
     },
+  },
+  setup() {
+    const barcodeStore = useScannedBarCodesStore();
+    return {
+      barcodeStore,
+    };
   },
 });
 </script>

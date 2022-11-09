@@ -1,18 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <v-layout>
+    <v-app-bar color="grey-lighten-2">
+      <span class="header-text">Barcode scanner app</span>
+    </v-app-bar>
+    <BarcodeScanner />
+  </v-layout>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import HelloWorld from "./components/HelloWorld.vue";
-
-@Options({
+import BarcodeScanner from "./components/BarcodeScanner.vue";
+export default {
+  name: "App",
   components: {
-    HelloWorld,
+    BarcodeScanner,
   },
-})
-export default class App extends Vue {}
+};
 </script>
 
 <style lang="scss">
@@ -23,5 +25,10 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.header-text {
+  margin-left: 20px;
+  font-weight: bold;
 }
 </style>

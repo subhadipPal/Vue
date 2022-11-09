@@ -9,6 +9,7 @@
     <ScannerOverlay
       :showDialog="isOverlayActive"
       :scannerControls="scannerControls"
+      @update="updateOverlay"
     />
     <BarcodeList :scannedBarcodes="scannedBarcodes" />
   </div>
@@ -40,6 +41,9 @@ export default defineComponent({
     };
   },
   methods: {
+    updateOverlay(newOverlayState: boolean) {
+      this.isOverlayActive = newOverlayState;
+    },
     openOverlay() {
       this.isOverlayActive = !this.isOverlayActive;
       if (this.isOverlayActive) {
@@ -53,7 +57,6 @@ export default defineComponent({
               this.scannerControls = controls;
               if (result) {
                 this.scannedBarcodes.push(result?.getText());
-                console.log(this.scannedBarcodes);
                 controls.stop();
                 this.isOverlayActive = false;
               }

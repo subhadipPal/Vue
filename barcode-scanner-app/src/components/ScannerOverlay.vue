@@ -12,8 +12,6 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
-  <h1>{{ dialog }}</h1>
-  <h1>{{ showDialog }}</h1>
 </template>
 
 <script lang="ts">
@@ -21,6 +19,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ScannerOverlay",
+  emits: ["update"],
   props: ["showDialog", "scannerControls"],
   data() {
     return {
@@ -35,7 +34,7 @@ export default defineComponent({
   methods: {
     close() {
       this.dialog = false;
-      this.$emit("showDialog", false);
+      this.$emit("update", false);
       this.scannerControls.stop();
     },
   },

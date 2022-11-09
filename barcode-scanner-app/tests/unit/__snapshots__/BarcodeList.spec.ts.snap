@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HelloWorld.vue renders BarCodeList for scanned codes 1`] = `
+<div class="barcode-list-container">
+  <div class="barcode-list" style="display: none;">
+    <v-list lines="one"></v-list>
+  </div><span style="display: block;">No barcodes yet</span>
+</div>
+`;

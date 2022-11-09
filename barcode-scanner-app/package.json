@@ -18,6 +18,7 @@
     "vuetify": "^3.0.0"
   },
   "devDependencies": {
+    "@pinia/testing": "^0.0.14",
     "@types/jest": "^27.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
